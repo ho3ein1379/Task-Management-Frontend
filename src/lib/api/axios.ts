@@ -1,5 +1,5 @@
 import axios from "axios";
-import { path } from "@/src/lib/config/Path";
+import { Path } from "@/src/lib/config/Path";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
@@ -28,7 +28,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem("token");
-      window.location.href = path.auth.login;
+      window.location.href = Path.auth.login;
     }
     return Promise.reject(error);
   },
