@@ -19,7 +19,7 @@ export default function RegisterPage() {
   const { error, loading, handleSubmit } = RegisterHandler();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4 cursor-default">
       <Card className="w-full max-w-md shadow-2xl">
         <div className="text-center mb-6">
           <UserAddOutlined className="text-5xl text-blue-600 mb-2" />
