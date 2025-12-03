@@ -78,7 +78,6 @@ export default function RegisterCard() {
         {error && (
           <Alert title={error} type="error" showIcon className="mb-4" />
         )}
-
       </Card>
     </div>
   );
