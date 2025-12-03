@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Layout, Menu, Avatar, Dropdown, Space, Typography } from "antd";
 import {
@@ -20,14 +20,14 @@ const { Header, Sider, Content } = Layout;
 const { Text } = Typography;
 
 interface DashboardLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { user, logout } = useAuthStore();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   const handleLogout = () => {
     logout();
@@ -81,7 +81,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   ];
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout style={{ minHeight: "100vh" }} className="cursor-default">
       <Sider
         trigger={null}
         collapsible
@@ -117,7 +117,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       </Sider>
 
       <Layout
-        style={{ marginLeft: collapsed ? 80 : 200, transition: "all 0.2s" }}
+        style={{ marginLeft: collapsed ? 80 : 200, transition: "all 0.3s" }}
       >
         <Header
           style={{
