@@ -4,9 +4,9 @@ export const Path = {
     register: "/auth/register",
   },
   main: {
-    dashboard: "/dashboard",
-    tasks: "/tasks",
-    categories: "/categories",
-    stats: "/stats",
+    dashboard: "/main/dashboard",
+    tasks: "/main/tasks",
+    categories: "/main/categories",
+    stats: "/main/stats",
   },
 } as const;

@@ -24,7 +24,7 @@ import DashboardHandler from "@/src/components/containers/main/DashboardHandler"
 
 const { Title } = Typography;
 
-export default function DashboardPage() {
+export default function Page() {
   const { stats, isPending, error, refetch } = DashboardHandler();
 
   if (isPending) {

@@ -6,7 +6,7 @@ import { Spin } from "antd";
 import { useAuthStore } from "@/src/lib/store/AuthStore";
 import { Path } from "@/src/lib/config/Path";
 
-export default function Home() {
+export default function Page() {
   const router = useRouter();
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 

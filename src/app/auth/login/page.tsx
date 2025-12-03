@@ -8,7 +8,7 @@ import { Path } from "@/src/lib/config/Path";
 
 const { Title, Text } = Typography;
 
-export default function LoginPage() {
+export default function Page() {
   const [form] = Form.useForm();
 
   const { error, isPending, submitAction } = LoginHandler();

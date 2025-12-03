@@ -13,7 +13,7 @@ import RegisterHandler from "@/src/components/containers/auth/RegisterHandler";
 
 const { Title, Text } = Typography;
 
-export default function RegisterPage() {
+export default function Page() {
   const [form] = Form.useForm();
 
   const { error, isPending, submitAction } = RegisterHandler();
