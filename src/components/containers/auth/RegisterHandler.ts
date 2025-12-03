@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { AxiosError } from "axios";
 import { useAuthStore } from "@/src/lib/store/AuthStore";
@@ -9,39 +9,40 @@ interface ApiErrorResponse {
   message: string;
 }
 
+interface RegisterValues {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
 export default function RegisterHandler() {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [isPending, startTransition] = useTransition();
 
-  const handleSubmit = async (values: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-  }) => {
-    setLoading(true);
+  const submitAction = (values: RegisterValues) => {
     setError("");
 
-    try {
-      const response = await authApi.register(values);
-      setAuth(response.user, response.token);
-      router.push(Path.main.dashboard);
-    } catch (err) {
-      if (err instanceof AxiosError) {
-        const errorMessage =
-          (err.response?.data as ApiErrorResponse)?.message ||
-          "Register failed. Please try again.";
-        setError(errorMessage);
-      } else {
-        setError("An unexpected error occurred. Please try again.");
+    startTransition(async () => {
+      try {
+        const response = await authApi.register(values);
+        setAuth(response.user, response.token);
+        router.push(Path.main.dashboard);
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          const errorMessage =
+            (err.response?.data as ApiErrorResponse)?.message ||
+            "Registration failed. Please try again.";
+          setError(errorMessage);
+        } else {
+          setError("An unexpected error occurred. Please try again.");
+        }
       }
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
-  return { error, loading, handleSubmit };
+  return { error, isPending, submitAction };
 }
