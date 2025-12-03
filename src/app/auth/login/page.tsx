@@ -11,7 +11,7 @@ const { Title, Text } = Typography;
 export default function LoginPage() {
   const [form] = Form.useForm();
 
-  const { error, loading, handleSubmit } = LoginHandler();
+  const { error, isPending, submitAction } = LoginHandler();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4 cursor-default">
@@ -31,7 +31,7 @@ export default function LoginPage() {
         <Form
           form={form}
           layout="vertical"
-          onFinish={handleSubmit}
+          onFinish={submitAction}
           size="large"
         >
           <Form.Item
@@ -63,7 +63,7 @@ export default function LoginPage() {
             <Button
               type="primary"
               htmlType="submit"
-              loading={loading}
+              loading={isPending}
               block
               size="middle"
             >
