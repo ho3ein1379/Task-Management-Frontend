@@ -7,7 +7,7 @@ export const endpoints = {
   main: {
     tasks: {
       all: "/tasks",
-      find_by_id: (id: string | string[]) => `/tasks/${id}`,
+      get_by_id: (id: string | string[]) => `/tasks/${id}`,
       create: "/tasks",
       update_by_id: (id: string | string[]) => `/tasks/${id}`,
       delete_by_id: (id: string | string[]) => `/tasks/${id}`,
@@ -19,6 +19,14 @@ export const endpoints = {
       overdue: "/stats/overdue",
       recent_activity: "/stats/recent-activity",
       productivity: "/stats/productivity",
+    },
+    categories: {
+      all: "/categories",
+      get_by_id: (id: string | string[]) => `/categories/${id}`,
+      create: "/categories",
+      update_by_id: (id: string | string[]) => `/categories/${id}`,
+      delete_by_id: (id: string | string[]) => `/categories/${id}`,
+      get_stats: "/categories/stats",
     },
   },
 };
