@@ -54,7 +54,6 @@ export default function LoginCard() {
         {error && (
           <Alert title={error} type="error" showIcon className="mb-4" />
         )}
-
       </Card>
     </div>
   );
