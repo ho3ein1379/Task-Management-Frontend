@@ -30,7 +30,7 @@ export const tasksApi = {
   },
 
   getById: async (id: string) => {
-    const response = await api.get<Task>(endpoints.main.tasks.find_by_id(id));
+    const response = await api.get<Task>(endpoints.main.tasks.get_by_id(id));
     return response.data;
   },
 
