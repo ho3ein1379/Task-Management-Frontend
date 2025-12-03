@@ -7,5 +7,6 @@ export const Path = {
     dashboard: "/dashboard",
     tasks: "/tasks",
     categories: "/categories",
+    stats: "/stats",
   },
 } as const;
