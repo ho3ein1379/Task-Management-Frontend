@@ -13,10 +13,10 @@ import RegisterHandler from "@/src/components/containers/auth/RegisterHandler";
 
 const { Title, Text } = Typography;
 
-export default function RegisterPage() {
+export default function Page() {
   const [form] = Form.useForm();
 
-  const { error, loading, handleSubmit } = RegisterHandler();
+  const { error, isPending, submitAction } = RegisterHandler();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 p-4 cursor-default">
@@ -36,7 +36,7 @@ export default function RegisterPage() {
         <Form
           form={form}
           layout="vertical"
-          onFinish={handleSubmit}
+          onFinish={submitAction}
           size="large"
         >
           <Row gutter={12}>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
             <Button
               type="primary"
               htmlType="submit"
-              loading={loading}
+              loading={isPending}
               block
               size="large"
             >
