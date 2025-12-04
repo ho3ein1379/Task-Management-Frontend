@@ -42,6 +42,10 @@ export default function LoginCard() {
             autoComplete="current-password"
           />
 
+          {error && (
+            <Alert title={error} type="error" showIcon className="mb-4" />
+          )}
+
           <AuthFooter
             buttonText="Sign In"
             isPending={isPending}
@@ -50,10 +54,6 @@ export default function LoginCard() {
             linkText="Sign up"
           />
         </Form>
-
-        {error && (
-          <Alert title={error} type="error" showIcon className="mb-4" />
-        )}
       </Card>
     </div>
   );

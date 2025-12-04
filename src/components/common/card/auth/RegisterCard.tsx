@@ -66,6 +66,10 @@ export default function RegisterCard() {
             autoComplete="new-password"
           />
 
+          {error && (
+            <Alert title={error} type="error" showIcon className="mb-4" />
+          )}
+
           <AuthFooter
             buttonText="Sign Up"
             isPending={isPending}
@@ -74,10 +78,6 @@ export default function RegisterCard() {
             linkText="Sign in"
           />
         </Form>
-
-        {error && (
-          <Alert title={error} type="error" showIcon className="mb-4" />
-        )}
       </Card>
     </div>
   );
