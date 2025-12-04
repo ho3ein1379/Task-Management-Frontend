@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Layout, Menu, Avatar, Dropdown, Space, Typography } from "antd";
+import { Layout, Menu, Avatar, Dropdown, Space, Typography, App } from "antd";
 import {
   DashboardOutlined,
   CheckSquareOutlined,
@@ -27,10 +27,13 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { user, logout } = useAuthStore();
+  const { message } = App.useApp();
+
   const [collapsed, setCollapsed] = useState(true);
 
   const handleLogout = () => {
     logout();
+    message.success(`Logout successfully`);
     router.push(Path.auth.login);
   };
 
@@ -152,8 +155,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             </Space>
           </Dropdown>
         </Header>
-
-        <Content style={{ margin: "24px", minHeight: 280 }}>{children}</Content>
+        <App>
+          <Content style={{ margin: "24px", minHeight: 280 }}>
+            {children}
+          </Content>
+        </App>
       </Layout>
     </Layout>
   );

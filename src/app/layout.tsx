@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { App } from "antd";
 import "./globals.css";
 import { AntdProvider } from "@/src/provider/AntProvider";
 
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AntdProvider>{children}</AntdProvider>
+        <App>
+          <AntdProvider>{children}</AntdProvider>
+        </App>
       </body>
     </html>
   );
