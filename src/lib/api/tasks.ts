@@ -1,5 +1,10 @@
 import { api } from "./axios";
-import { Task, TaskStatus, TaskPriority } from "@/src/types/Index";
+import {
+  Task,
+  TaskStatus,
+  TaskPriority,
+  PaginatedResponse,
+} from "@/src/types/Index";
 import { endpoints } from "@/src/lib/config/endpoints";
 
 export interface CreateTaskDto {
@@ -23,9 +28,10 @@ export interface TaskFilters {
 
 export const tasksApi = {
   getAll: async (filters?: TaskFilters) => {
-    const response = await api.get<Task[]>(endpoints.main.tasks.all, {
-      params: filters,
-    });
+    const response = await api.get<PaginatedResponse<Task>>(
+      endpoints.main.tasks.all,
+      { params: filters },
+    );
     return response.data;
   },
 
