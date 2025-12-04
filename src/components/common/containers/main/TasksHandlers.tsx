@@ -1,10 +1,17 @@
 import { useState, useCallback, useTransition } from "react";
-import { message } from "antd";
+import { App } from "antd";
 import { tasksApi, TaskFilters } from "@/src/lib/api/tasks";
 import { Task } from "@/src/types/Index";
 
 export default function TasksHandlers() {
+  const { message } = App.useApp();
+
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [pagination, setPagination] = useState({
+    total: 0,
+    page: 1,
+    totalPages: 1,
+  });
   const [error, setError] = useState<string>("");
   const [isPending, startTransition] = useTransition();
 
@@ -12,8 +19,13 @@ export default function TasksHandlers() {
     setError("");
     startTransition(async () => {
       try {
-        const data = await tasksApi.getAll(filters);
-        setTasks(data);
+        const response = await tasksApi.getAll(filters);
+        setTasks(response.data);
+        setPagination({
+          total: response.total,
+          page: response.page,
+          totalPages: response.totalPages,
+        });
       } catch (err) {
         console.error("Failed to load tasks:", err);
         setError("Failed to load tasks. Please try again.");
@@ -34,7 +46,7 @@ export default function TasksHandlers() {
         throw err;
       }
     },
-    [],
+    [message],
   );
 
   const updateTask = useCallback(
@@ -52,7 +64,7 @@ export default function TasksHandlers() {
         throw err;
       }
     },
-    [],
+    [message],
   );
 
   const deleteTask = useCallback(async (id: string) => {
@@ -65,10 +77,11 @@ export default function TasksHandlers() {
       message.error("Failed to delete task");
       throw err;
     }
-  }, []);
+  }, [message]);
 
   return {
     tasks,
+    pagination,
     isPending,
     error,
     loadTasks,
