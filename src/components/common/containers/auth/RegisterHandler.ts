@@ -1,6 +1,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { AxiosError } from "axios";
+import { App } from "antd";
 import { useAuthStore } from "@/src/lib/store/AuthStore";
 import { authApi } from "@/src/lib/api/auth";
 import { Path } from "@/src/lib/config/Path";
@@ -19,6 +20,7 @@ interface RegisterValues {
 export default function RegisterHandler() {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
+  const { message } = App.useApp();
 
   const [error, setError] = useState<string>("");
   const [isPending, startTransition] = useTransition();
@@ -31,6 +33,9 @@ export default function RegisterHandler() {
         const response = await authApi.register(values);
         setAuth(response.user, response.token);
         router.push(Path.main.dashboard);
+        message.success(
+          `Registration successfully, welcome ${response.user.firstName}`,
+        );
       } catch (err) {
         if (err instanceof AxiosError) {
           const errorMessage =
