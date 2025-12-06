@@ -1,92 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import {
-  Button,
-  Row,
-  Col,
-  Typography,
-  Empty,
-  Spin,
-  Modal,
-  Pagination,
-} from "antd";
-import { PlusOutlined, ExclamationCircleFilled } from "@ant-design/icons";
-
-import { Task } from "@/src/types/Index";
-import { TaskFilters } from "@/src/lib/api/tasks";
-import TasksHandlers from "@/src/components/common/containers/main/TasksHandlers";
-import CategoriesHandler from "@/src/components/common/containers/main/CategoriesHandler";
+import { useState } from "react";
+import { Button, Row, Col, Typography, Empty, Spin, Pagination } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
 import TasksFilter from "@/src/components/common/card/tasks/TasksFilter";
 import TaskCard from "@/src/components/common/card/tasks/TaskCard";
 import TaskFormModal from "@/src/components/common/modal/TasksFormModal";
+import TaskHelperHandlers from "@/src/components/common/containers/main/task/TaskHelperHandlers";
 
 const { Title } = Typography;
-const { confirm } = Modal;
 
 export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const {
+    selectedTask,
+    filters,
     tasks,
     pagination,
     isPending,
-    loadTasks,
-    createTask,
-    updateTask,
-    deleteTask,
-  } = TasksHandlers();
-
-  const { categories, loadCategories } = CategoriesHandler();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
-  const [filters, setFilters] = useState<TaskFilters>({});
-
-  useEffect(() => {
-    loadTasks();
-    loadCategories();
-  }, [loadTasks, loadCategories]);
-
-  const handleFilter = (newFilters: TaskFilters) => {
-    setFilters(newFilters);
-    loadTasks(newFilters);
-  };
-
-  const handlePageChange = (page: number, pageSize: number) => {
-    loadTasks({ ...filters, page, limit: pageSize });
-  };
-
-  const handleCreate = () => {
-    setSelectedTask(null);
-    setIsModalOpen(true);
-  };
-
-  const handleEdit = (task: Task) => {
-    setSelectedTask(task);
-    setIsModalOpen(true);
-  };
-
-  const handleDelete = (task: Task) => {
-    confirm({
-      title: "Delete Task",
-      icon: <ExclamationCircleFilled />,
-      content: `Are you sure you want to delete "${task.title}"?`,
-      okText: "Yes, Delete",
-      okType: "danger",
-      cancelText: "Cancel",
-      onOk: async () => {
-        await deleteTask(task.id);
-      },
-    });
-  };
-
-  const handleSubmit = async (values: Parameters<typeof createTask>[0]) => {
-    if (selectedTask) {
-      await updateTask(selectedTask.id, values);
-    } else {
-      await createTask(values);
-    }
-  };
+    categories,
+    handleFilter,
+    handlePageChange,
+    handleCreate,
+    handleEdit,
+    handleDelete,
+    handleSubmit,
+  } = TaskHelperHandlers({ setIsModalOpen });
 
   return (
     <DashboardLayout>
