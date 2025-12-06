@@ -8,13 +8,18 @@ import CategoryHandlers from "@/src/components/common/containers/main/category/C
 
 interface TaskProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  setIsDetailsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function TaskHelperHandlers({ setIsModalOpen }: TaskProps) {
+export default function TaskHelperHandlers({
+  setIsModalOpen,
+  setIsDetailsModalOpen,
+}: TaskProps) {
   const { modal } = App.useApp();
 
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [filters, setFilters] = useState<TaskFilters>({});
+  const [viewTask, setViewTask] = useState<Task | null>(null);
 
   const {
     tasks,
@@ -52,6 +57,11 @@ export default function TaskHelperHandlers({ setIsModalOpen }: TaskProps) {
     setIsModalOpen(true);
   };
 
+  const handleView = (task: Task) => {
+    setViewTask(task);
+    setIsDetailsModalOpen(true);
+  };
+
   const handleDelete = (task: Task) => {
     modal.confirm({
       title: "Delete Task",
@@ -77,6 +87,7 @@ export default function TaskHelperHandlers({ setIsModalOpen }: TaskProps) {
   return {
     selectedTask,
     filters,
+    viewTask,
     tasks,
     pagination,
     isPending,
@@ -85,6 +96,7 @@ export default function TaskHelperHandlers({ setIsModalOpen }: TaskProps) {
     handlePageChange,
     handleCreate,
     handleEdit,
+    handleView,
     handleDelete,
     handleSubmit,
   };

@@ -7,6 +7,7 @@ import {
   MoreOutlined,
   CalendarOutlined,
   FolderOutlined,
+  EyeOutlined,
 } from "@ant-design/icons";
 import { format } from "date-fns";
 import TaskStatusBadge from "@/src/components/common/card/tasks/TaskStatusBadge";
@@ -20,9 +21,15 @@ interface TaskCardProps {
   task: Task;
   onEdit: (task: Task) => void;
   onDelete: (task: Task) => void;
+  onView: (task: Task) => void;
 }
 
-export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
+export default function TaskCard({
+  task,
+  onEdit,
+  onDelete,
+  onView,
+}: TaskCardProps) {
   const menuItems = [
     {
       key: "edit",
@@ -46,6 +53,14 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
     <Card
       className="h-full"
       actions={[
+        <Button
+          key="view"
+          type="text"
+          icon={<EyeOutlined />}
+          onClick={() => onView(task)}
+        >
+          View
+        </Button>,
         <Button
           key="edit"
           type="text"

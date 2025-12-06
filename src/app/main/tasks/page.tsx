@@ -8,15 +8,18 @@ import TasksFilter from "@/src/components/common/card/tasks/TasksFilter";
 import TaskCard from "@/src/components/common/card/tasks/TaskCard";
 import TaskFormModal from "@/src/components/common/modal/TasksFormModal";
 import TaskHelperHandlers from "@/src/components/common/containers/main/task/TaskHelperHandlers";
+import TaskDetailsModal from "@/src/components/common/modal/TaskDetailsModal";
 
 const { Title } = Typography;
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
 
   const {
     selectedTask,
     filters,
+    viewTask,
     tasks,
     pagination,
     isPending,
@@ -25,9 +28,10 @@ export default function Page() {
     handlePageChange,
     handleCreate,
     handleEdit,
+    handleView,
     handleDelete,
     handleSubmit,
-  } = TaskHelperHandlers({ setIsModalOpen });
+  } = TaskHelperHandlers({ setIsModalOpen, setIsDetailsModalOpen });
 
   return (
     <DashboardLayout>
@@ -80,6 +84,7 @@ export default function Page() {
                     task={task}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
+                    onView={handleView}
                   />
                 </Col>
               ))}
@@ -107,6 +112,11 @@ export default function Page() {
         onSubmit={handleSubmit}
         task={selectedTask}
         categories={categories}
+      />
+      <TaskDetailsModal
+        open={isDetailsModalOpen}
+        onClose={() => setIsDetailsModalOpen(false)}
+        task={viewTask}
       />
     </DashboardLayout>
   );
