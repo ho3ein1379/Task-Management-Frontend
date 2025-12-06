@@ -1,5 +1,5 @@
 import { api } from "./axios";
-import { Stats } from "@/src/types/Index";
+import { CategoryStats, Stats } from "@/src/types/Index";
 import { endpoints } from "@/src/lib/config/endpoints";
 
 export const statsApi = {
@@ -9,7 +9,9 @@ export const statsApi = {
   },
 
   getCategoryStats: async () => {
-    const response = await api.get(endpoints.main.stats.categories);
+    const response = await api.get<CategoryStats[]>(
+      endpoints.main.stats.categories,
+    );
     return response.data;
   },
 

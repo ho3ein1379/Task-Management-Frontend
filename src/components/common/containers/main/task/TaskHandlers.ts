@@ -3,7 +3,7 @@ import { App } from "antd";
 import { tasksApi, TaskFilters } from "@/src/lib/api/tasks";
 import { Task } from "@/src/types/Index";
 
-export default function TasksHandlers() {
+export default function TaskHandlers() {
   const { message } = App.useApp();
 
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -67,17 +67,20 @@ export default function TasksHandlers() {
     [message],
   );
 
-  const deleteTask = useCallback(async (id: string) => {
-    try {
-      await tasksApi.delete(id);
-      setTasks((prev) => prev.filter((task) => task.id !== id));
-      message.success("Task deleted successfully");
-    } catch (err) {
-      console.error("Failed to delete task:", err);
-      message.error("Failed to delete task");
-      throw err;
-    }
-  }, [message]);
+  const deleteTask = useCallback(
+    async (id: string) => {
+      try {
+        await tasksApi.delete(id);
+        setTasks((prev) => prev.filter((task) => task.id !== id));
+        message.success("Task deleted successfully");
+      } catch (err) {
+        console.error("Failed to delete task:", err);
+        message.error("Failed to delete task");
+        throw err;
+      }
+    },
+    [message],
+  );
 
   return {
     tasks,

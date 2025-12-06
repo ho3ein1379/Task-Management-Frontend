@@ -2,7 +2,7 @@
 
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
 import DashboardCard from "@/src/components/common/card/dashboard/DashboardCard";
-import DashboardHandler from "@/src/components/common/containers/main/DashboardHandler";
+import DashboardHandler from "@/src/components/common/containers/main/dashboard/DashboardHandler";
 import { Alert, Button, Spin } from "antd";
 
 export default function Page() {
