@@ -79,3 +79,14 @@ export interface CategoryStats {
   color: string;
   taskCount: number;
 }
+
+export interface Attachment {
+  id: string;
+  filename: string;
+  originalName: string;
+  mimetype: string;
+  size: number;
+  path: string;
+  taskId: string;
+  uploadedAt: string;
+}
