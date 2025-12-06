@@ -72,3 +72,10 @@ export interface Stats {
     low: number;
   };
 }
+
+export interface CategoryStats {
+  id: string;
+  name: string;
+  color: string;
+  taskCount: number;
+}
