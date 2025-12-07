@@ -36,17 +36,17 @@ export default function ProfileCard() {
         <Title level={2}>User Profile</Title>
 
         <Card>
-          <Descriptions title="Profile Information" bordered>
-            <Descriptions.Item label="First Name" span={3}>
+          <Descriptions title="Profile Information" bordered column={1}>
+            <Descriptions.Item label="First Name">
               {userProfile?.firstName}
             </Descriptions.Item>
-            <Descriptions.Item label="Last Name" span={3}>
+            <Descriptions.Item label="Last Name">
               {userProfile?.lastName}
             </Descriptions.Item>
-            <Descriptions.Item label="Full Name" span={3}>
+            <Descriptions.Item label="Full Name">
               {userProfile?.firstName} {userProfile?.lastName}
             </Descriptions.Item>
-            <Descriptions.Item label="Email" span={3}>
+            <Descriptions.Item label="Email">
               {userProfile?.email}
             </Descriptions.Item>
           </Descriptions>
