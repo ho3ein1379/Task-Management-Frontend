@@ -11,10 +11,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/") {
+    return NextResponse.next();
+  }
+
   const token = request.cookies.get("token")?.value;
 
-  if (!token && pathname !== "/") {
-    return NextResponse.redirect(new URL(endpoints.auth.login, request.url));
+  if (!token) {
+    const loginUrl = new URL(endpoints.auth.login, request.url);
+    loginUrl.searchParams.set("redirect", pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
   return NextResponse.next();
@@ -26,8 +32,9 @@ export const config = {
      * Match all request paths except:
      * - _next/static (static files)
      * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
+     * - icon files
+     * - public files
      */
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|icon|apple-icon|favicon).*)",
   ],
 };
