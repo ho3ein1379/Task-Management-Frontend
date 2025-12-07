@@ -72,6 +72,7 @@ export default function TaskUpload({
                   width={18}
                   height={18}
                   src={`${process.env.NEXT_PUBLIC_API_URL}${endpoints.main.uploads.preview(attachment)}`}
+                  unoptimized
                   alt="Uploaded image"
                   className="!min-w-18 !min-h-18 object-cover rounded"
                 />
@@ -141,6 +142,7 @@ export default function TaskUpload({
             height={40}
             src={previewImage}
             alt="Preview"
+            unoptimized
             className="!w-full !h-auto"
           />
         )}
