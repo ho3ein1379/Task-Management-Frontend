@@ -31,6 +31,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   const [collapsed, setCollapsed] = useState(true);
 
+  const isProfilePage = pathname === Path.auth.profile;
+
   const handleLogout = () => {
     logout();
     message.success(`Logout successfully`);
@@ -67,9 +69,20 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const userMenuItems = [
     {
       key: "profile",
-      icon: <UserOutlined />,
-      label: "Profile",
-      onClick: () => {},
+      icon: (
+        <UserOutlined
+          style={{ color: isProfilePage ? "#1677ff" : undefined }}
+        />
+      ),
+      label: (
+        <span style={{ color: isProfilePage ? "#1677ff" : undefined }}>
+          Profile
+        </span>
+      ),
+      onClick: () => router.push(Path.auth.profile),
+      style: isProfilePage
+        ? { backgroundColor: "#e6f4ff", borderRadius: 6 }
+        : {},
     },
     {
       type: "divider" as const,

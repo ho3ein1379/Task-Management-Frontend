@@ -72,3 +72,21 @@ export interface Stats {
     low: number;
   };
 }
+
+export interface CategoryStats {
+  id: string;
+  name: string;
+  color: string;
+  taskCount: number;
+}
+
+export interface Attachment {
+  id: string;
+  filename: string;
+  originalName: string;
+  mimetype: string;
+  size: number;
+  path: string;
+  taskId: string;
+  uploadedAt: string;
+}

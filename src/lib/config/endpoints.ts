@@ -1,3 +1,5 @@
+import { Attachment } from "@/src/types/Index";
+
 export const endpoints = {
   auth: {
     login: "/auth/login",
@@ -27,6 +29,16 @@ export const endpoints = {
       update_by_id: (id: string | string[]) => `/categories/${id}`,
       delete_by_id: (id: string | string[]) => `/categories/${id}`,
       get_stats: "/categories/stats",
+    },
+    uploads: {
+      upload_file: (taskId: string | string[]) => `/upload/task/${taskId}`,
+      get_task_attachments: (taskId: string | string[]) =>
+        `/upload/task/${taskId}`,
+      downloadFile: (attachmentId: string | string[]) =>
+        `/upload/download/${attachmentId}`,
+      deleteAttachment: (attachmentId: string | string[]) =>
+        `/upload/${attachmentId}`,
+      preview: (attachment: Attachment) => `/uploads/${attachment.filename}`,
     },
   },
 };
