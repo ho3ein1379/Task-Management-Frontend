@@ -8,10 +8,10 @@ import {
   HistoryOutlined,
 } from "@ant-design/icons";
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
-import UpcomingTasks from "@/src/components/common/card/stats/UpcomingTasks";
-import OverdueTasks from "@/src/components/common/card/stats/OverdueTasks";
-import RecentActivity from "@/src/components/common/card/stats/RecentActivity";
-import StatsHandler from "@/src/components/common/containers/main/stats/StatsHandler";
+import UpcomingTasks from "@/src/components/pages/card/stats/UpcomingTasks";
+import OverdueTasks from "@/src/components/pages/card/stats/OverdueTasks";
+import RecentActivity from "@/src/components/pages/card/stats/RecentActivity";
+import StatsHandler from "@/src/components/containers/main/stats/StatsHandler";
 
 const { Title } = Typography;
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Card, Descriptions, Spin, Typography } from "antd";
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
-import ProfileHandler from "@/src/components/common/containers/auth/ProfileHandler";
+import ProfileHandler from "@/src/components/containers/auth/ProfileHandler";
 
 const { Title } = Typography;
 

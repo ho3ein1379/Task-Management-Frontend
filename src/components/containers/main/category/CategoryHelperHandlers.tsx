@@ -3,7 +3,7 @@ import { App } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { statsApi } from "@/src/lib/api/stats";
 import { Category } from "@/src/types/Index";
-import CategoryHandlers from "@/src/components/common/containers/main/category/CategoryHandlers";
+import CategoryHandlers from "@/src/components/containers/main/category/CategoryHandlers";
 
 interface CategoriesProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;

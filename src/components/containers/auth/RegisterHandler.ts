@@ -2,7 +2,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { AxiosError } from "axios";
 import { App } from "antd";
-import { useAuthStore } from "@/src/lib/store/AuthStore";
+import { useAuthStore } from "@/src/store/AuthStore";
 import { authApi } from "@/src/lib/api/auth";
 import { Path } from "@/src/lib/config/Path";
 
@@ -10,7 +10,14 @@ interface ApiErrorResponse {
   message: string;
 }
 
-export default function LoginHandler() {
+interface RegisterValues {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
+export default function RegisterHandler() {
   const router = useRouter();
   const setAuth = useAuthStore((state) => state.setAuth);
   const { message } = App.useApp();
@@ -18,22 +25,22 @@ export default function LoginHandler() {
   const [error, setError] = useState<string>("");
   const [isPending, startTransition] = useTransition();
 
-  const submitAction = (values: { email: string; password: string }) => {
+  const submitAction = (values: RegisterValues) => {
     setError("");
 
     startTransition(async () => {
       try {
-        const response = await authApi.login(values);
+        const response = await authApi.register(values);
         setAuth(response.user, response.token);
         router.push(Path.main.dashboard);
         message.success(
-          `Login successfully, welcome back ${response.user.firstName}`,
+          `Registration successfully, welcome ${response.user.firstName}`,
         );
       } catch (err) {
         if (err instanceof AxiosError) {
           const errorMessage =
             (err.response?.data as ApiErrorResponse)?.message ||
-            "Login failed. Please try again.";
+            "Registration failed. Please try again.";
           setError(errorMessage);
         } else {
           setError("An unexpected error occurred. Please try again.");
