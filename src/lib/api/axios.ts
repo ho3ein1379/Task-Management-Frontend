@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Path } from "@/src/lib/config/Path";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://192.168.1.113:3000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const api = axios.create({
   baseURL: API_URL,
