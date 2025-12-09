@@ -133,7 +133,7 @@ export default function TaskFormModal({
                 size="large"
                 allowClear
                 showSearch={{
-                  optionFilterProp:'children'
+                  optionFilterProp: "children",
                 }}
               >
                 {categories.map((cat) => (
