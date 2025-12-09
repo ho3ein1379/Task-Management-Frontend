@@ -3,12 +3,11 @@
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { Modal, Descriptions, Tag, Spin, Tabs } from "antd";
 import { format } from "date-fns";
-import { Task } from "@/src/types/Index";
+import { Task, Attachment } from "@/src/types/Index";
 import { uploadApi } from "@/src/lib/api/upload";
-import { Attachment } from "@/src/types/Index";
-import TaskStatusBadge from "@/src/components/common/card/tasks/TaskStatusBadge";
-import TaskPriorityBadge from "@/src/components/common/card/tasks/TaskPriorityBadge";
-import TaskUpload from "@/src/components/common/card/tasks/TaskUpload";
+import TaskStatusBadge from "@/src/components/pages/card/tasks/TaskStatusBadge";
+import TaskPriorityBadge from "@/src/components/pages/card/tasks/TaskPriorityBadge";
+import TaskUpload from "@/src/components/pages/card/tasks/TaskUpload";
 
 interface TaskDetailsModalProps {
   open: boolean;

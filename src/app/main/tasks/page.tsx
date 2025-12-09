@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Button, Row, Col, Typography, Empty, Spin, Pagination } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
-import TasksFilter from "@/src/components/common/card/tasks/TasksFilter";
-import TaskCard from "@/src/components/common/card/tasks/TaskCard";
-import TaskFormModal from "@/src/components/common/modal/TasksFormModal";
-import TaskHelperHandlers from "@/src/components/common/containers/main/task/TaskHelperHandlers";
-import TaskDetailsModal from "@/src/components/common/modal/TaskDetailsModal";
+import TasksFilter from "@/src/components/pages/card/tasks/TasksFilter";
+import TaskCard from "@/src/components/pages/card/tasks/TaskCard";
+import TaskFormModal from "@/src/components/pages/modal/TasksFormModal";
+import TaskHelperHandlers from "@/src/components/containers/main/task/TaskHelperHandlers";
+import TaskDetailsModal from "@/src/components/pages/modal/TaskDetailsModal";
 
 const { Title } = Typography;
 

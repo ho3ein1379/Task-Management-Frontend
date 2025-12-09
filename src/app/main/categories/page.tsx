@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Button, Row, Col, Typography, Empty, Spin, Input } from "antd";
 import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
 import DashboardLayout from "@/src/components/layout/DashboardLayout";
-import CategoryCard from "@/src/components/common/card/categories/CategoryCard";
-import CategoryFormModal from "@/src/components/common/modal/CategoryFormModal";
-import CategoryHelperHandlers from "@/src/components/common/containers/main/category/CategoryHelperHandlers";
+import CategoryCard from "@/src/components/pages/card/categories/CategoryCard";
+import CategoryFormModal from "@/src/components/pages/modal/CategoryFormModal";
+import CategoryHelperHandlers from "@/src/components/containers/main/category/CategoryHelperHandlers";
 
 const { Title } = Typography;
 const { Search } = Input;

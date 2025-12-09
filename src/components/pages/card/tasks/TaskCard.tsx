@@ -7,11 +7,10 @@ import {
   MoreOutlined,
   CalendarOutlined,
   FolderOutlined,
-  EyeOutlined,
 } from "@ant-design/icons";
 import { format } from "date-fns";
-import TaskStatusBadge from "@/src/components/common/card/tasks/TaskStatusBadge";
-import TaskPriorityBadge from "@/src/components/common/card/tasks/TaskPriorityBadge";
+import TaskStatusBadge from "@/src/components/pages/card/tasks/TaskStatusBadge";
+import TaskPriorityBadge from "@/src/components/pages/card/tasks/TaskPriorityBadge";
 import { Task } from "@/src/types/Index";
 import "@/src/styles/Antdstyles.css";
 
@@ -53,14 +52,14 @@ export default function TaskCard({
     <Card
       className="h-full"
       actions={[
-        <Button
+        /*<Button
           key="view"
           type="text"
           icon={<EyeOutlined />}
           onClick={() => onView(task)}
         >
           View
-        </Button>,
+        </Button>,*/
         <Button
           key="edit"
           type="text"

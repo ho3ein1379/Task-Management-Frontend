@@ -132,8 +132,9 @@ export default function TaskFormModal({
                 placeholder="Select category"
                 size="large"
                 allowClear
-                showSearch
-                optionFilterProp="children"
+                showSearch={{
+                  optionFilterProp: "children",
+                }}
               >
                 {categories.map((cat) => (
                   <Select.Option key={cat.id} value={cat.id}>
