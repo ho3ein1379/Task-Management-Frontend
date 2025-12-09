@@ -1,9 +1,9 @@
 import { Alert, Card, Col, Form, Input, Row, Typography } from "antd";
 import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
-import RegisterHandler from "@/src/components/common/containers/auth/RegisterHandler";
-import EmailInput from "@/src/components/common/ui/field/EmailInput";
-import PasswordInput from "@/src/components/common/ui/field/PasswordInput";
-import AuthFooter from "@/src/components/common/ui/AuthFooter";
+import RegisterHandler from "@/src/components/containers/auth/RegisterHandler";
+import EmailInput from "@/src/components/pages/ui/field/EmailInput";
+import PasswordInput from "@/src/components/pages/ui/field/PasswordInput";
+import AuthFooter from "@/src/components/pages/ui/AuthFooter";
 import { Path } from "@/src/lib/config/Path";
 import "@/src/styles/RepeatStyles.css";
 

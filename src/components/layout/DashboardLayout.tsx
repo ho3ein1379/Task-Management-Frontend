@@ -18,7 +18,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from "@ant-design/icons";
-import { useAuthStore } from "@/src/lib/store/AuthStore";
+import { useAuthStore } from "@/src/store/AuthStore";
 import { Path } from "@/src/lib/config/Path";
 import { LayoutItems } from "@/src/mock/LayoutItems";
 import "@/src/styles/Antdstyles.css";

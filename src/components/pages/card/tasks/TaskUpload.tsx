@@ -13,7 +13,7 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import { uploadApi } from "@/src/lib/api/upload";
 import { Attachment } from "@/src/types/Index";
-import UploadHelperHandlers from "@/src/components/common/containers/main/task/UploadHelperHandlers";
+import UploadHelperHandlers from "@/src/components/containers/main/task/UploadHelperHandlers";
 import { endpoints } from "@/src/lib/config/endpoints";
 
 const { Text } = Typography;

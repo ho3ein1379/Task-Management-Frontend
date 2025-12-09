@@ -3,8 +3,8 @@ import { App } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { TaskFilters } from "@/src/lib/api/tasks";
 import { Task } from "@/src/types/Index";
-import TaskHandlers from "@/src/components/common/containers/main/task/TaskHandlers";
-import CategoryHandlers from "@/src/components/common/containers/main/category/CategoryHandlers";
+import TaskHandlers from "@/src/components/containers/main/task/TaskHandlers";
+import CategoryHandlers from "@/src/components/containers/main/category/CategoryHandlers";
 
 interface TaskProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
